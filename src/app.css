@@ -1,1 +1,34 @@
 @import 'tailwindcss';
+svg {
+    height: 100%;
+    width: 50%;
+}
+
+.current-focused:hover {
+    fill: #676767 !important;   
+}
+
+.current-focused {
+    fill: #676767;
+}
+
+path {
+    fill: #cccccc;  /* <-- your desired default color */
+    stroke: #333;
+    stroke-width: 1;
+}
+
+@layer {
+    path {
+        @apply transition-all duration-1000;
+    }
+}
+
+path:hover {
+    fill: red;
+}
+
+#features {
+    transform-origin: 0 0;
+    transition: transform 0.5s ease-in-out;
+}
