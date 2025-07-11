@@ -1,0 +1,1 @@
+# Yangon is the economic captical of Myanmar.

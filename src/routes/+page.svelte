@@ -1,6 +1,8 @@
 <script lang="ts">
   import Myanmar from "$lib/Myanmar.svelte";
   import { onMount } from "svelte";
+  import { globalRegion } from "$lib/GlobalState.svelte";
+  import CurrentRegion from "$lib/CurrentRegion.svelte";
 
   onMount(() => {
     const svgSelector = document.querySelectorAll("svg g path[name]");
@@ -24,11 +26,11 @@
             zoomGroup.setAttribute("transform", "scale(1) translate(0, 0)")
             path.classList.remove("current-focused")
             lastPath = null;
+            globalRegion.currentState = null;
             currentZoom = null;
             return;
         }
 
-        // Calculate translate needed to center the path
         const x = bbox.x;
         const y = bbox.y;
 
@@ -45,6 +47,7 @@
         );
 
         lastPath = path as SVGPathElement;
+        globalRegion.currentState = path.getAttribute("name");
         currentZoom = path.getAttribute("name");
       });
     }
@@ -52,5 +55,7 @@
 </script>
 
 <div class="w-screen h-screen flex justify-center items-center">
+  <CurrentRegion />
   <Myanmar />
+  <CurrentRegion />
 </div>

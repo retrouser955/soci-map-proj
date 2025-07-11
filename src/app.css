@@ -1,8 +1,5 @@
 @import 'tailwindcss';
-svg {
-    height: 100%;
-    width: 50%;
-}
+@plugin "@tailwindcss/typography";
 
 .current-focused:hover {
     fill: #676767 !important;   
@@ -12,23 +9,17 @@ svg {
     fill: #676767;
 }
 
-path {
-    fill: #cccccc;  /* <-- your desired default color */
-    stroke: #333;
-    stroke-width: 1;
-}
-
 @layer {
-    path {
-        @apply transition-all duration-1000;
+    .current-focused {
+        @apply bg-gray-600 hover:!bg-gray-600;
     }
-}
-
-path:hover {
-    fill: red;
-}
-
-#features {
-    transform-origin: 0 0;
-    transition: transform 0.5s ease-in-out;
+    path {
+        @apply transition-all duration-500 fill-gray-400 stroke-gray-500 stroke-1 hover:fill-red-400;
+    }
+    svg {
+        @apply h-full w-[40%];
+    }
+    #features {
+        @apply origin-top-left transition-all duration-500;
+    }
 }
