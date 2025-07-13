@@ -2,22 +2,19 @@
 @plugin "@tailwindcss/typography";
 
 .current-focused:hover {
-    fill: #676767 !important;   
+    fill: oklch(90.5% 0.182 98.111) !important;   
 }
 
 .current-focused {
-    fill: #676767;
+    fill: oklch(90.5% 0.182 98.111);
 }
 
 @layer {
-    .current-focused {
-        @apply bg-gray-600 hover:!bg-gray-600;
-    }
     path {
-        @apply transition-all duration-500 fill-gray-400 stroke-gray-500 stroke-1 hover:fill-red-400;
+        @apply transition-all duration-500 fill-yellow-200 stroke-gray-500 stroke-1 hover:fill-yellow-300;
     }
     svg {
-        @apply h-full w-[40%];
+        @apply h-full w-[50%];
     }
     #features {
         @apply origin-top-left transition-all duration-500;

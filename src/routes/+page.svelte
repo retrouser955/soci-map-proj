@@ -3,11 +3,20 @@
   import { onMount } from "svelte";
   import { globalRegion } from "$lib/GlobalState.svelte";
   import CurrentRegion from "$lib/CurrentRegion.svelte";
+  import Navbar from "$lib/Navbar/Navbar.svelte";
+  import Instructions from "$lib/Instructions/Instructions.svelte";
+
+  let audio: HTMLAudioElement;
 
   onMount(() => {
     const svgSelector = document.querySelectorAll("svg g path[name]");
     const zoomGroup = document.querySelector("#features") as SVGGElement;
     const svg = document.querySelector("#map") as SVGSVGElement;
+
+    audio.src = "/audio/SAUNG.mp3";
+    audio.load();
+    audio.volume = 0.1;
+    audio.play();
 
     let currentZoom: string | null = null;
     let lastPath: SVGPathElement | null = null;
@@ -54,8 +63,12 @@
   });
 </script>
 
-<div class="w-screen h-screen flex justify-center items-center">
-  <CurrentRegion />
+<Navbar />
+<div class="w-screen h-[85vh] flex justify-center items-center px-40">
   <Myanmar />
-  <CurrentRegion />
+  <div class="h-full w-[50%]">
+    <Instructions />
+    <CurrentRegion />
+  </div>
 </div>
+<audio class="hidden" volume=0.4 bind:this={audio}></audio>
