@@ -32,7 +32,7 @@
 
 <div class="flex overflow-hidden w-full">
   <div
-    class="flex gap-4"
+    class="flex gap-4 will-change-transform"
     bind:this={track}
     onmouseenter={() => cancelAnimationFrame(animationFrameId)}
     onmouseleave={() => animate(track.scrollWidth / 2)}

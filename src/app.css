@@ -17,6 +17,6 @@
         @apply h-full w-[50%];
     }
     #features {
-        @apply origin-top-left transition-all duration-500;
+        @apply origin-top-left transition-all duration-1000 ease-in-out will-change-transform;
     }
 }
